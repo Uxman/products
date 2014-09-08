@@ -1,9 +1,39 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Introduction</title>
+		<title>Customers Record</title>
 	<head>
 	<body>
-		<h1>Heading</h1>
-	<body>
+		<div ng-app="" ng-controller="customersController">
+			<table>
+				<tr>
+					<td>Name</td>
+					<td>Age</td>
+					<td>Height</td>
+					<td>Weight</td>
+					<td>Qualification</td>
+					<td>CNIC</td>
+					<td>Customer Id</td>
+				   
+				</tr>
+				<tr ng-repeat="x in names" >
+					<td>{{ x.Name | uppercase}}</td>
+					<td>{{x.Age}}</td>
+					<td>{{x.Height}}</td>
+					<td>{{x.weight}}</td>
+					<td>{{x.Qualification}}</td>
+					<td>{{x.CNIC}}</td>
+					<td>{{x.cust_id}}</td>
+				</tr>
+			</table>
+		</div>
+		<script src="js/angular.min.js">
+		</script>
+		<script>
+		function customersController($scope,$http) {
+		$http.get("https://github.com/Uxman/products/customers.json")
+		.success(function(response) {$scope.names = response;});
+		}
+		</script>
+	</body>
 </html>
